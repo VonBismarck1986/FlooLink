@@ -125,8 +125,8 @@ const messageFns : Record<ServerMessageType, (data : Uint8Array) => void> = {
                     position: new Float32Array([0, 0, 0])
                 });
             }
-            // state.users = players;
-            // state.users = new Set(players.map(x => x.slice(1)));
+            //state.users = players;
+            //state.users = new Set(players.map(x => x.slice(1)));
         });
         ws!.send(decoder.decode(new Uint8Array([ClientMessageType.SendSignal, 0])) + JSON.stringify({key: "value"}))
     },
@@ -159,7 +159,7 @@ const messageFns : Record<ServerMessageType, (data : Uint8Array) => void> = {
         for(let i = 0; i < numPlayers; i++) {
             const id = data[i * 13];
             const pos = new Float32Array(data.buffer.slice(i * 13 + 1), 0, 3);
-            // console.log(id, pos);
+            console.log(id, pos);
             set(state => {
                 state.users.get(id)!.position = pos;
             })

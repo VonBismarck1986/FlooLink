@@ -5,7 +5,7 @@ import { URLStore, useURLStore } from "@stores/URLStore";
 import { useEffect, useMemo } from "preact/hooks"
 
 const selectConnectionOptions = (state : ReturnType<typeof URLStore["get"]>) : ServerInitOptions => ({
-    playerId: state.query["playerId"] ?? "tangerie",
+    playerId: state.query["playerId"] ?? "vonbismarck",
     url: state.query["url"] ?? "ws://localhost:8081"
 })
 

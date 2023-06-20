@@ -13,7 +13,7 @@ const selectConnectionOptions = (state : ReturnType<typeof URLStore["get"]>) : s
 export default function MapRoute() {
     const connectionURL = useURLStore(selectConnectionOptions);
     const status = usePlayerStore(state => state.status);
-    // const players = usePlayerStore(state => Array.from(state.players.values()));
+    const players = usePlayerStore(state => Array.from(state.players.values()));
 
     useEffect(() => {
         PlayerStore.actions.connect(connectionURL);
@@ -22,7 +22,7 @@ export default function MapRoute() {
 
     
     return <div class="h-screen w-screen">
-        {/* <h1 class="text-2xl mb-8">{status}</h1>
+        <h1 class="text-2xl mb-8">{status}</h1>
         {
             players.map(player => <div class="flex flex-col">
                 <h2 class="text-xl">{player.username} ({player.id})</h2>
@@ -30,7 +30,7 @@ export default function MapRoute() {
                 <span>{valueToKey(player.info.Gender, Unreal.EGender)}</span>
                 <span>{valueToKey(player.info.House, Unreal.EHouse)}</span>
             </div>)
-        } */}
+        }
         <SVGPlayerMap class="w-screen h-screen"/>
     </div>
 }

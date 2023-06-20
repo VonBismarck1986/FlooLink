@@ -38,6 +38,17 @@ export const PlayerStore = createStore({
 
             setupSocket();
         },
+        connectUser(state, url: string) {
+            if (state.status === "Connected" || state.status === "Connecting") {
+                console.error("Socket already connecting");
+                return;
+            }
+            state.status = ConnectionStatus.Connecting;
+            ws = new WebSocket(`${url}/vc`);
+            ws.binaryType = "arraybuffer";
+
+            setupSocket();
+        },
         disconnect(state) {
             // Dont clear options in case of reconnect
             state.status = ConnectionStatus.Ready;

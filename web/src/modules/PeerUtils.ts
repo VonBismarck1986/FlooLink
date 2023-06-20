@@ -11,6 +11,8 @@ export function createInitiatorPeer() {
     peer.on("signal", signal => {
         console.log("[INIT]", signal);
         // Send signal to websocket
+        peer.signal(signal);
+    
     });
 
     return peer;
@@ -25,11 +27,11 @@ export function createRecieverPeer() {
     });
 
     peer.on("signal", signal => {
+        console.log("Sending");
         console.log("[REC]", signal);
         // Send return signal to websocket
+        peer.signal(signal);
     });
-
-    // peer.signal(incomingSignal)
 
     return peer;
 }
